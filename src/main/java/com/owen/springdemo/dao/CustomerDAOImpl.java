@@ -21,7 +21,6 @@ public class CustomerDAOImpl implements CustomerDAO{
     private SessionFactory sessionFactory;
 
     @Override
-    @Transactional // Add this annotation, spring will start and end transaction for us
     public List<Customer> getCustomers() {
 
         // Get the current hibernate session

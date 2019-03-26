@@ -2,9 +2,11 @@ package com.owen.springdemo.controller;
 
 import com.owen.springdemo.dao.CustomerDAO;
 import com.owen.springdemo.entity.Customer;
+import com.owen.springdemo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -13,15 +15,14 @@ import java.util.List;
 @RequestMapping("/customer")
 public class CustomerController {
 
-	// need to inject customer DAO
 	@Autowired
-	private CustomerDAO customerDAO;
+	private CustomerService customerService;
 
-	@RequestMapping("/list")
+	@GetMapping("/list")
 	public String listCustomers(Model theModel) {
 
 		// get customers from the dao
-		List<Customer> customers = customerDAO.getCustomers();
+		List<Customer> customers = customerService.getCustomers();
 
 		// add the customers to model
 		theModel.addAttribute("customers", customers);
