@@ -27,6 +27,9 @@
 		<h3>Save Customer</h3>
 	
 		<form:form action="saveCustomer" modelAttribute="customer" method="POST">
+
+			<!-- Add this line in order to maintain the customer id, so we won't create a new instance while Update -->
+			<form:hidden path="id"/>
 		
 			<table>
 				<tbody>
